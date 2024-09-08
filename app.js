@@ -16,66 +16,66 @@ addTodoButton.addEventListener("click", () => {
     });
 
     // Optional: Add Delete Button
-    // const deleteButton = document.createElement("button");
-    // deleteButton.textContent = "Delete";
-    // deleteButton.className = "delete-button"; // Add the delete-button class
-    // deleteButton.addEventListener("click", () => {
-    //   todoList.removeChild(li);
-    //   saveTodos(); // Save todos after deletion
-    // });
+    const deleteButton = document.createElement("button");
+    deleteButton.textContent = "Delete";
+    deleteButton.className = "delete-button"; // Add the delete-button class
+    deleteButton.addEventListener("click", () => {
+      todoList.removeChild(li);
+      saveTodos(); // Save todos after deletion
+    });
 
-    // li.appendChild(deleteButton);
+    li.appendChild(deleteButton);
     todoList.appendChild(li);
     todoInput.value = "";
 
-    // saveTodos();
+    saveTodos();
   }
 });
 
 // Task 12: Store Todos in Local Storage
 
 // Save todos to localStorage
-// function saveTodos() {
-//   const todos = [];
-//   todoList.querySelectorAll("li").forEach((li) => {
-//     todos.push({
-//       text: li.firstChild.textContent,
-//       completed: li.classList.contains("completed"),
-//     });
-//   });
-//   localStorage.setItem("todos", JSON.stringify(todos));
-// }
+function saveTodos() {
+  const todos = [];
+  todoList.querySelectorAll("li").forEach((li) => {
+    todos.push({
+      text: li.firstChild.textContent,
+      completed: li.classList.contains("completed"),
+    });
+  });
+  localStorage.setItem("todos", JSON.stringify(todos));
+}
 
-// // Load todos from localStorage
-// function loadTodos() {
-//   const todos = JSON.parse(localStorage.getItem("todos")) || [];
-//   todos.forEach((todo) => {
-//     const li = document.createElement("li");
-//     li.textContent = todo.text;
+// Load todos from localStorage
+function loadTodos() {
+  const todos = JSON.parse(localStorage.getItem("todos")) || [];
+  todos.forEach((todo) => {
+    const li = document.createElement("li");
+    li.textContent = todo.text;
 
-//     // Add Toggle Complete
-//     li.addEventListener("click", () => {
-//       li.classList.toggle("completed");
-//       saveTodos(); // Save todos after toggling
-//     });
+    // Add Toggle Complete
+    li.addEventListener("click", () => {
+      li.classList.toggle("completed");
+      saveTodos(); // Save todos after toggling
+    });
 
-//     if (todo.completed) {
-//       li.classList.add("completed");
-//     }
+    if (todo.completed) {
+      li.classList.add("completed");
+    }
 
-//     // Optional: Add Delete Button
-//     const deleteButton = document.createElement("button");
-//     deleteButton.textContent = "Delete";
-//     deleteButton.className = "delete-button"; // Add the delete-button class
-//     deleteButton.addEventListener("click", () => {
-//       todoList.removeChild(li);
-//       saveTodos(); // Save todos after deletion
-//     });
+    // Optional: Add Delete Button
+    const deleteButton = document.createElement("button");
+    deleteButton.textContent = "Delete";
+    deleteButton.className = "delete-button"; // Add the delete-button class
+    deleteButton.addEventListener("click", () => {
+      todoList.removeChild(li);
+      saveTodos(); // Save todos after deletion
+    });
 
-//     li.appendChild(deleteButton);
-//     todoList.appendChild(li);
-//   });
-// }
+    li.appendChild(deleteButton);
+    todoList.appendChild(li);
+  });
+}
 
-// // Load todos when the page loads
-// document.addEventListener("DOMContentLoaded", loadTodos);
+// Load todos when the page loads
+document.addEventListener("DOMContentLoaded", loadTodos);
